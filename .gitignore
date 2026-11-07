@@ -1,0 +1,12 @@
+.venv/
+.idea/
+__pycache__/
+*.pyc
+*.log
+*.jsonl
+!evidence/**/*.log
+!evidence/**/*.jsonl
+*.db
+*.sqlite3
+.DS_Store
+.env

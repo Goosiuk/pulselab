@@ -1,0 +1,411 @@
+{
+  "started_at": "2026-11-06T21:48:09.200816+00:00",
+  "commands": [
+    {
+      "started_at": "2026-11-06T21:48:09.202373+00:00",
+      "finished_at": "2026-11-06T21:48:09.233081+00:00",
+      "args": [
+        "docker",
+        "ps",
+        "-a",
+        "--filter",
+        "name=^/pulselab-demo$",
+        "--format",
+        "{{.ID}}"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:09.233728+00:00",
+      "finished_at": "2026-11-06T21:48:09.269471+00:00",
+      "args": [
+        "docker",
+        "image",
+        "inspect",
+        "pulselab:local"
+      ],
+      "exit_code": 0,
+      "stdout": "[\n    {\n        \"Id\": \"sha256:f3831cec1d54da5d070da7bf7ce21c5d43ea95b21fa0c7698303ea721b8a17e3\",\n        \"RepoTags\": [\n            \"pulselab:local\"\n        ],\n        \"RepoDigests\": [],\n        \"Comment\": \"buildkit.dockerfile.v0\",\n        \"Created\": \"2026-11-06T21:47:20.612396793Z\",\n        \"Config\": {\n            \"User\": \"10001\",\n            \"ExposedPorts\": {\n                \"8765/tcp\": {}\n            },\n            \"Env\": [\n                \"PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\n                \"LANG=C.UTF-8\",\n                \"GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305\",\n                \"PYTHON_VERSION=3.12.16\",\n                \"PYTHON_SHA256=b5796915dc45ff745cfb4e990a7e7c93d6f546328a102ce31448d69ebc37575c\",\n                \"PYTHONDONTWRITEBYTECODE=1\",\n                \"PYTHONUNBUFFERED=1\"\n            ],\n            \"Cmd\": [\n                \"python\",\n                \"lab_service.py\",\n                \"--bind\",\n                \"0.0.0.0\",\n                \"--port\",\n                \"8765\"\n            ],\n            \"WorkingDir\": \"/app\",\n            \"ArgsEscaped\": true\n        },\n        \"Architecture\": \"arm64\",\n        \"Os\": \"linux\",\n        \"Size\": 144614132,\n        \"GraphDriver\": {\n            \"Data\": {\n                \"LowerDir\": \"/var/lib/docker/overlay2/phejzgw1gv3olbeqrhchzg6f7/diff:/var/lib/docker/overlay2/zluijscznc040j558o1dv83eq/diff:/var/lib/docker/overlay2/9afcc628251c3e90860753ff0ee4708944260918285fd055a3c68052363340f2/diff:/var/lib/docker/overlay2/2ab66782f4230364146f46f01da027867f8b31206429294832a0d576f5aeda1d/diff:/var/lib/docker/overlay2/a8a35ce297335e7d199f96fe3118f1c278b0c460c7d5353078d354635c08872c/diff:/var/lib/docker/overlay2/0f500ea389f35a8d6400e7e644a5bb9bc3991b61410ecea61299a623cbe84aa7/diff\",\n                \"MergedDir\": \"/var/lib/docker/overlay2/io0qa7sydy9ts5spr8sot9yb3/merged\",\n                \"UpperDir\": \"/var/lib/docker/overlay2/io0qa7sydy9ts5spr8sot9yb3/diff\",\n                \"WorkDir\": \"/var/lib/docker/overlay2/io0qa7sydy9ts5spr8sot9yb3/work\"\n            },\n            \"Name\": \"overlay2\"\n        },\n        \"RootFS\": {\n            \"Type\": \"layers\",\n            \"Layers\": [\n                \"sha256:04e61ff9ed2c84e88795bf7562d69d0980188e2bb6d6152d6fe721383e10db9e\",\n                \"sha256:8a6e20eb4e4040b1d94bc6e06af31e37e5fa4bd264ee163f43a15b1e3a18949c\",\n                \"sha256:4018623d5e6937415351e3d8697eb27327b530a0d1f2f8935b77363f591aadf9\",\n                \"sha256:bc69d47cb8c450fdb1acccf3e8c91367eed93857769e309acf5ef34894ea28ad\",\n                \"sha256:94107c328cdeaf30a50ea57b8a425d73284620e23a7ab77980b09fdfe279178e\",\n                \"sha256:4c0a58649c04f7c85c759e0338ec1748596baa831f3017d83b41fc9a06850be3\",\n                \"sha256:fa002db65d229b34953761b7bb8f7470ce850b5af06cb2702b13cfae74f2520a\"\n            ]\n        },\n        \"Metadata\": {\n            \"LastTagTime\": \"2026-11-06T21:47:20.623825293Z\"\n        }\n    }\n]\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:09.269893+00:00",
+      "finished_at": "2026-11-06T21:48:09.408735+00:00",
+      "args": [
+        "docker",
+        "run",
+        "--init",
+        "-d",
+        "--name",
+        "pulselab-demo",
+        "--label",
+        "io.pulselab.project=pulselab",
+        "-p",
+        "127.0.0.1:8088:8765",
+        "pulselab:local"
+      ],
+      "exit_code": 0,
+      "stdout": "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:09.409140+00:00",
+      "finished_at": "2026-11-06T21:48:09.423701+00:00",
+      "args": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .Config.Labels}}",
+        "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"io.pulselab.project\":\"pulselab\"}\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:09.424115+00:00",
+      "finished_at": "2026-11-06T21:48:09.441106+00:00",
+      "args": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .NetworkSettings.Ports}}",
+        "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"8765/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"8088\"}]}\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:09.441510+00:00",
+      "finished_at": "2026-11-06T21:48:09.488959+00:00",
+      "args": [
+        "docker",
+        "exec",
+        "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375",
+        "id",
+        "-u"
+      ],
+      "exit_code": 0,
+      "stdout": "10001\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:09.489422+00:00",
+      "finished_at": "2026-11-06T21:48:09.539848+00:00",
+      "args": [
+        "docker",
+        "exec",
+        "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375",
+        "python",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Python 3.12.16\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:09.564918+00:00",
+      "finished_at": "2026-11-06T21:48:09.742941+00:00",
+      "args": [
+        "./.venv/bin/python",
+        "monitor.py",
+        "--url",
+        "http://127.0.0.1:8088/health",
+        "--count",
+        "2",
+        "--interval",
+        "0.1",
+        "--timeout",
+        "0.5",
+        "--out",
+        "evidence/2026-11-07-docker/healthy.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status_code\": 200, \"elapsed_ms\": 19.88820801489055, \"url\": \"http://127.0.0.1:8088/health\", \"ok\": true, \"error\": null}\n{\"status_code\": 200, \"elapsed_ms\": 3.1751669012010098, \"url\": \"http://127.0.0.1:8088/health\", \"ok\": true, \"error\": null}\n{\"type\": \"summary\", \"total\": 2, \"availability_percent\": 100.0}\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:09.743960+00:00",
+      "finished_at": "2026-11-06T21:48:09.963277+00:00",
+      "args": [
+        "docker",
+        "stop",
+        "--time",
+        "3",
+        "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375"
+      ],
+      "exit_code": 0,
+      "stdout": "Flag --time has been deprecated, use --timeout instead\n0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:09.964295+00:00",
+      "finished_at": "2026-11-06T21:48:09.990292+00:00",
+      "args": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"exited\",\"Running\":false,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":0,\"ExitCode\":143,\"Error\":\"\",\"StartedAt\":\"2026-11-06T21:48:09.31507026Z\",\"FinishedAt\":\"2026-11-06T21:48:09.770235094Z\"}\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:09.990832+00:00",
+      "finished_at": "2026-11-06T21:48:10.173828+00:00",
+      "args": [
+        "./.venv/bin/python",
+        "monitor.py",
+        "--url",
+        "http://127.0.0.1:8088/health",
+        "--count",
+        "2",
+        "--interval",
+        "0.1",
+        "--timeout",
+        "0.5",
+        "--out",
+        "evidence/2026-11-07-docker/stopped.jsonl"
+      ],
+      "exit_code": 1,
+      "stdout": "{\"status_code\": null, \"elapsed_ms\": 18.08508299291134, \"url\": \"http://127.0.0.1:8088/health\", \"ok\": false, \"error\": \"[Errno 61] Connection refused\"}\n{\"status_code\": null, \"elapsed_ms\": 0.40729192551225424, \"url\": \"http://127.0.0.1:8088/health\", \"ok\": false, \"error\": \"[Errno 61] Connection refused\"}\n{\"type\": \"summary\", \"total\": 2, \"availability_percent\": 0.0}\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:10.175145+00:00",
+      "finished_at": "2026-11-06T21:48:10.280647+00:00",
+      "args": [
+        "docker",
+        "start",
+        "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375"
+      ],
+      "exit_code": 0,
+      "stdout": "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:10.494880+00:00",
+      "finished_at": "2026-11-06T21:48:10.693132+00:00",
+      "args": [
+        "./.venv/bin/python",
+        "monitor.py",
+        "--url",
+        "http://127.0.0.1:8088/health",
+        "--count",
+        "2",
+        "--interval",
+        "0.1",
+        "--timeout",
+        "0.5",
+        "--out",
+        "evidence/2026-11-07-docker/recovered.jsonl"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"status_code\": 200, \"elapsed_ms\": 21.58008294645697, \"url\": \"http://127.0.0.1:8088/health\", \"ok\": true, \"error\": null}\n{\"status_code\": 200, \"elapsed_ms\": 3.820790909230709, \"url\": \"http://127.0.0.1:8088/health\", \"ok\": true, \"error\": null}\n{\"type\": \"summary\", \"total\": 2, \"availability_percent\": 100.0}\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:10.694210+00:00",
+      "finished_at": "2026-11-06T21:48:10.719747+00:00",
+      "args": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":905,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-11-06T21:48:10.207221344Z\",\"FinishedAt\":\"2026-11-06T21:48:09.770235094Z\"}\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:10.720481+00:00",
+      "finished_at": "2026-11-06T21:48:10.746182+00:00",
+      "args": [
+        "docker",
+        "logs",
+        "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"event\": \"started\", \"address\": [\"0.0.0.0\", 8765]}\n{\"ts\": \"2026-11-06T21:48:09.563026+00:00\", \"path\": \"/health\", \"status\": 200, \"mode\": \"healthy\"}\n{\"ts\": \"2026-11-06T21:48:09.624657+00:00\", \"path\": \"/health\", \"status\": 200, \"mode\": \"healthy\"}\n{\"ts\": \"2026-11-06T21:48:09.733119+00:00\", \"path\": \"/health\", \"status\": 200, \"mode\": \"healthy\"}\n{\"event\": \"started\", \"address\": [\"0.0.0.0\", 8765]}\n{\"ts\": \"2026-11-06T21:48:10.491930+00:00\", \"path\": \"/health\", \"status\": 200, \"mode\": \"healthy\"}\n{\"ts\": \"2026-11-06T21:48:10.575264+00:00\", \"path\": \"/health\", \"status\": 200, \"mode\": \"healthy\"}\n{\"ts\": \"2026-11-06T21:48:10.684160+00:00\", \"path\": \"/health\", \"status\": 200, \"mode\": \"healthy\"}\n",
+      "stderr": ""
+    },
+    {
+      "started_at": "2026-11-06T21:48:10.747117+00:00",
+      "finished_at": "2026-11-06T21:48:10.767850+00:00",
+      "args": [
+        "docker",
+        "inspect",
+        "--format",
+        "{{json .State}}",
+        "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"Status\":\"running\",\"Running\":true,\"Paused\":false,\"Restarting\":false,\"OOMKilled\":false,\"Dead\":false,\"Pid\":905,\"ExitCode\":0,\"Error\":\"\",\"StartedAt\":\"2026-11-06T21:48:10.207221344Z\",\"FinishedAt\":\"2026-11-06T21:48:09.770235094Z\"}\n",
+      "stderr": ""
+    }
+  ],
+  "phases": [
+    {
+      "name": "healthy",
+      "started_at": "2026-11-06T21:48:09.564850+00:00",
+      "finished_at": "2026-11-06T21:48:09.743629+00:00",
+      "results": [
+        {
+          "status_code": 200,
+          "elapsed_ms": 19.88820801489055,
+          "url": "http://127.0.0.1:8088/health",
+          "ok": true,
+          "error": null
+        },
+        {
+          "status_code": 200,
+          "elapsed_ms": 3.1751669012010098,
+          "url": "http://127.0.0.1:8088/health",
+          "ok": true,
+          "error": null
+        }
+      ],
+      "summary": {
+        "type": "summary",
+        "total": 2,
+        "availability_percent": 100.0
+      },
+      "cli_exit_code": 0
+    },
+    {
+      "name": "stopped",
+      "started_at": "2026-11-06T21:48:09.990768+00:00",
+      "finished_at": "2026-11-06T21:48:10.174732+00:00",
+      "results": [
+        {
+          "status_code": null,
+          "elapsed_ms": 18.08508299291134,
+          "url": "http://127.0.0.1:8088/health",
+          "ok": false,
+          "error": "[Errno 61] Connection refused"
+        },
+        {
+          "status_code": null,
+          "elapsed_ms": 0.40729192551225424,
+          "url": "http://127.0.0.1:8088/health",
+          "ok": false,
+          "error": "[Errno 61] Connection refused"
+        }
+      ],
+      "summary": {
+        "type": "summary",
+        "total": 2,
+        "availability_percent": 0.0
+      },
+      "cli_exit_code": 1
+    },
+    {
+      "name": "recovered",
+      "started_at": "2026-11-06T21:48:10.494678+00:00",
+      "finished_at": "2026-11-06T21:48:10.693860+00:00",
+      "results": [
+        {
+          "status_code": 200,
+          "elapsed_ms": 21.58008294645697,
+          "url": "http://127.0.0.1:8088/health",
+          "ok": true,
+          "error": null
+        },
+        {
+          "status_code": 200,
+          "elapsed_ms": 3.820790909230709,
+          "url": "http://127.0.0.1:8088/health",
+          "ok": true,
+          "error": null
+        }
+      ],
+      "summary": {
+        "type": "summary",
+        "total": 2,
+        "availability_percent": 100.0
+      },
+      "cli_exit_code": 0
+    }
+  ],
+  "url": "http://127.0.0.1:8088/health",
+  "source_hashes": {
+    "Dockerfile": "dd569cb06b1baeaca1f2d85159ce502f553c45317de0460f47b4709038bde506",
+    ".dockerignore": "95a9420b6893ea809b49877686aff1f8266ebd28138de75cefe3aa26f111d753",
+    "lab_service.py": "4b094a826671477b11176c7eb994e2384a682bb048a43280648f69bc3aa719d3",
+    "monitor.py": "0bb02dec5431dd4ee34c6084ef1c0d9b023b04d3fb4a35993985983c3db3e265"
+  },
+  "image": {
+    "Id": "sha256:f3831cec1d54da5d070da7bf7ce21c5d43ea95b21fa0c7698303ea721b8a17e3",
+    "Architecture": "arm64",
+    "Os": "linux",
+    "User": "10001"
+  },
+  "container_id": "0af3b2579a35782a381a17e609b07e97b2a6433ddce1bcf83b7af082157ca375",
+  "port_bindings": {
+    "8765/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "8088"
+      }
+    ]
+  },
+  "uid": "10001",
+  "container_python": "Python 3.12.16",
+  "readiness_probes": [
+    {
+      "checked_at": "2026-11-06T21:48:09.564308+00:00",
+      "result": {
+        "status_code": 200,
+        "elapsed_ms": 23.992792004719377,
+        "url": "http://127.0.0.1:8088/health",
+        "ok": true,
+        "error": null
+      }
+    },
+    {
+      "checked_at": "2026-11-06T21:48:10.493386+00:00",
+      "result": {
+        "status_code": 200,
+        "elapsed_ms": 2.213625004515052,
+        "url": "http://127.0.0.1:8088/health",
+        "ok": true,
+        "error": null
+      }
+    }
+  ],
+  "stopped_state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 143,
+    "Error": "",
+    "StartedAt": "2026-11-06T21:48:09.31507026Z",
+    "FinishedAt": "2026-11-06T21:48:09.770235094Z"
+  },
+  "final_state": {
+    "Status": "running",
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 905,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-11-06T21:48:10.207221344Z",
+    "FinishedAt": "2026-11-06T21:48:09.770235094Z"
+  },
+  "result": "passed",
+  "finished_at": "2026-11-06T21:48:10.768333+00:00",
+  "command_paths": "relative_to_project_root"
+}

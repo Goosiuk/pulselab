@@ -1,0 +1,8 @@
+{"event": "started", "address": ["0.0.0.0", 8765]}
+{"ts": "2026-11-06T21:48:09.563026+00:00", "path": "/health", "status": 200, "mode": "healthy"}
+{"ts": "2026-11-06T21:48:09.624657+00:00", "path": "/health", "status": 200, "mode": "healthy"}
+{"ts": "2026-11-06T21:48:09.733119+00:00", "path": "/health", "status": 200, "mode": "healthy"}
+{"event": "started", "address": ["0.0.0.0", 8765]}
+{"ts": "2026-11-06T21:48:10.491930+00:00", "path": "/health", "status": 200, "mode": "healthy"}
+{"ts": "2026-11-06T21:48:10.575264+00:00", "path": "/health", "status": 200, "mode": "healthy"}
+{"ts": "2026-11-06T21:48:10.684160+00:00", "path": "/health", "status": 200, "mode": "healthy"}

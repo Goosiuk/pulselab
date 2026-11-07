@@ -1,0 +1,14 @@
+test_200 (test_monitor.TestHTTP.test_200) ... ok
+test_404 (test_monitor.TestHTTP.test_404) ... ok
+test_503 (test_monitor.TestHTTP.test_503) ... ok
+test_connection_refused (test_monitor.TestHTTP.test_connection_refused) ... ok
+test_timeout (test_monitor.TestHTTP.test_timeout) ... ok
+test_append_preserves_previous_records (test_monitor.TestJSONL.test_append_preserves_previous_records) ... ok
+test_all_failed (test_monitor.TestSummary.test_all_failed) ... ok
+test_empty_is_unknown (test_monitor.TestSummary.test_empty_is_unknown) ... ok
+test_proportion (test_monitor.TestSummary.test_proportion) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.371s
+
+OK

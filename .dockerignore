@@ -1,0 +1,4 @@
+**
+!Dockerfile
+!.dockerignore
+!lab_service.py
