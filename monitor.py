@@ -106,6 +106,7 @@ def main(argv=None):
                 "type": "summary",
                 "total": len(checks),
                 "availability_percent": availability_percent(checks),
+                "avg_elapsed_ms": sum(result["elapsed_ms"] for result in checks) / len(checks),
             }
         )
     )
