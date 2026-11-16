@@ -65,7 +65,9 @@ def availability_percent(checks):
 
 
 def append_result(path, result):
-    with Path(path).open("a", encoding="utf-8") as file:
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as file:
         file.write(json.dumps(result, ensure_ascii=False) + "\n")
 
 
