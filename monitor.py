@@ -87,9 +87,11 @@ def main(argv=None):
         parser.error("count должен быть положительным")
     try:
         parsed_url = urlsplit(args.url)
+        # Обращение к port проверяет его формат и диапазон.
+        _ = parsed_url.port
     except ValueError:
-        parser.error("Некорректный URL")
-    if parsed_url.scheme not in ("http", "https") or not parsed_url.netloc:
+        parser.error("Некорректный URL или порт")
+    if parsed_url.scheme not in ("http", "https") or not parsed_url.hostname:
         parser.error("Нужен полный HTTP/HTTPS URL")
     checks = []
     for index in range(args.count):
